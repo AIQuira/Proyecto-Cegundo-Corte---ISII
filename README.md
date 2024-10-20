@@ -1,1 +1,1 @@
-# Proyecto-Cegundo-Corte---ISII
+# Proyecto-Segundo-Corte---ISII
