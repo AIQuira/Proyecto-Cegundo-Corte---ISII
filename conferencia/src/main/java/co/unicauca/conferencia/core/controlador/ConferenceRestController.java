@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.unicauca.conferencia.core.fachadaServices.DTO.ConferenceDTO;
@@ -22,5 +24,14 @@ public class ConferenceRestController {
         return ConferenceService.findAll();
     }
 
+    @GetMapping("/conferences/{id}")
+    public ConferenceDTO getConferenceById(Integer id) {
+        return ConferenceService.findById(id);
+    }
 
+    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public List<ConferenceDTO> getConferences() {
+        return ConferenceService.findAll();
+    }
 }
