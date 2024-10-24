@@ -3,7 +3,11 @@ package co.unicauca.conferencia.core.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +19,7 @@ import co.unicauca.conferencia.core.services.IConferenceService;
 @RestController
 @RequestMapping("/api")
 public class ConferenceRestController {
-    
+
     @Autowired
     private IConferenceService ConferenceService;
 
@@ -25,13 +29,28 @@ public class ConferenceRestController {
     }
 
     @GetMapping("/conferences/{id}")
-    public ConferenceDTO getConferenceById(Integer id) {
+    public ConferenceDTO getConferenceById(@PathVariable Integer id) {
         return ConferenceService.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public List<ConferenceDTO> getConferences() {
-        return ConferenceService.findAll();
+    @DeleteMapping("/conferences/{id}")
+    public Boolean eliminarConferencia(@PathVariable Integer id) {
+        Boolean bandera = false;
+        ConferenceDTO conferenciaActual = ConferenceService.findById(id);
+        if (conferenciaActual != null) {
+            bandera = ConferenceService.delete(id);
+        }
+        return bandera;
     }
+
+    @PutMapping("/conferences/{id}")
+    public ConferenceDTO actualizarConferencia(@RequestBody ConferenceDTO conferencia, @PathVariable Integer id) {
+        ConferenceDTO objConferencia = null;
+        ConferenceDTO conferenciaActual = ConferenceService.findById(id);
+        if (conferenciaActual != null) {
+            objConferencia = ConferenceService.update(id, conferencia);
+        }
+        return objConferencia;
+    }
+
 }

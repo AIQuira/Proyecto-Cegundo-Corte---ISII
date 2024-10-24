@@ -1,6 +1,7 @@
 package co.unicauca.conferencia.core.accesoDatos.repositories;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import co.unicauca.conferencia.core.accesoDatos.model.ConferenceEntity;
 
@@ -11,24 +12,26 @@ public class ConferenceRepository {
 
     private ArrayList<ConferenceEntity> listaConferencias;
 
-    public ConferenceRepository() {    
+    public ConferenceRepository() {
         this.listaConferencias = new ArrayList<ConferenceEntity>();
+        cargarConferencia();
     }
 
     /**
      * Constructor que inicializa la lista de conferencias
      */
-    public List<ConferenceEntity> findAll(){
+    public List<ConferenceEntity> findAll() {
         System.out.println("Invocando a Listar Clientes");
         return this.listaConferencias;
     }
 
     /**
      * Busca una conferencia por su Id
+     * 
      * @param id
      * @return
      */
-    public ConferenceEntity findById(Integer id){
+    public ConferenceEntity findById(Integer id) {
         System.out.println("Invocando a buscar Cliente por Id");
         ConferenceEntity objConference = null;
 
@@ -44,14 +47,15 @@ public class ConferenceRepository {
 
     /**
      * Guarda una conferencia
+     * 
      * @param conference
      * @return
      */
-    public ConferenceEntity save(ConferenceEntity conference){
+    public ConferenceEntity save(ConferenceEntity conference) {
         System.out.println("Invocando a guardar Cliente");
         ConferenceEntity objConference = null;
 
-        if(this.listaConferencias.add(conference)){
+        if (this.listaConferencias.add(conference)) {
             objConference = conference;
         }
 
@@ -60,19 +64,17 @@ public class ConferenceRepository {
 
     /**
      * Modifica una conferencia por su Id
+     * 
      * @param id
      * @param conference
      * @return
      */
-    public ConferenceEntity update(Integer id, ConferenceEntity conference)
-    {
+    public ConferenceEntity update(Integer id, ConferenceEntity conference) {
         System.out.println("Invocando a actualizar Conferencia");
         ConferenceEntity objConference = null;
 
-        for(int i=0; i < this.listaConferencias.size(); i++)
-        {
-            if(this.listaConferencias.get(i).getId() == id)
-            {
+        for (int i = 0; i < this.listaConferencias.size(); i++) {
+            if (this.listaConferencias.get(i).getId() == id) {
                 this.listaConferencias.set(i, conference);
                 objConference = conference;
                 break;
@@ -83,10 +85,11 @@ public class ConferenceRepository {
 
     /**
      * Elimina una conferencia por su Id
+     * 
      * @param id
      * @return
      */
-    public boolean delete(Integer id){
+    public boolean delete(Integer id) {
         System.out.println("Invocando a eliminar Conferencia");
         boolean bandera = false;
 
@@ -98,5 +101,18 @@ public class ConferenceRepository {
         }
 
         return bandera;
+    }
+
+    private void cargarConferencia() {
+        ConferenceEntity objCliente1 = new ConferenceEntity(1, "Google Chrome", "Bogota", new Date(), "navegadores web",
+                "YYYY", "312745433");
+        this.listaConferencias.add(objCliente1);
+        ConferenceEntity objCliente2 = new ConferenceEntity(2, "Chat gpt ", "Bogota", new Date(),
+                "inteligencia artificial", "YYYY", "354655768");
+        this.listaConferencias.add(objCliente2);
+        ConferenceEntity objCliente3 = new ConferenceEntity(3, "Bases de Datos", "manizales", new Date(),
+                "bases de datos", "YYYY", "38668862");
+        this.listaConferencias.add(objCliente3);
+
     }
 }
