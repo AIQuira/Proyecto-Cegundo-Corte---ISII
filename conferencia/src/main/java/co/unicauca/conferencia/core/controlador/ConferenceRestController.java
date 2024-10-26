@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.unicauca.conferencia.core.fachadaServices.DTO.ConferenceDTO;
 import co.unicauca.conferencia.core.services.IConferenceService;
 
+/**
+ * Controlador de conferencias
+ * Se encarga de gestionar las peticiones que llegan al servidor
+ */
 @RestController
 @RequestMapping("/api")
 public class ConferenceRestController {
