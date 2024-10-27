@@ -1,8 +1,8 @@
 package co.unicauca.revision.core.accesodatos.repositorios;
 
-import co.unicauca.revision.core.fachadaservicios.DTO.InterfaceRepositorioArticulo;
-import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
+
 import co.unicauca.revision.core.accesodatos.modelo.Articulo;
+import co.unicauca.revision.core.servicios.ArticuloServiceImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,7 +43,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
             return true;
 
         } catch (SQLException ex) {
-            Logger.getLogger(ServicioAlmacenamientoArticulos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -70,7 +70,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(ServicioAlmacenamientoArticulos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return articulos;
     }
@@ -97,7 +97,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(ServicioAlmacenamientoArticulos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return objArticulo;
@@ -124,7 +124,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
             }
             
         } catch (SQLException ex){
-            Logger.getLogger(ServicioAlmacenamientoArticulos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return actualizado;
     }
@@ -146,7 +146,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
             }
             
         } catch (SQLException ex){
-            Logger.getLogger(ServicioAlmacenamientoArticulos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return eliminado;
     }
@@ -166,7 +166,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
             Statement statement = connection.createStatement();
             statement.execute(sql);
         } catch (SQLException ex) {
-            Logger.getLogger(ServicioAlmacenamientoArticulos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ArticuloServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -176,7 +176,7 @@ public class RepositorioArticuloSqlite implements InterfaceRepositorioArticulo {
         try {
             connection = DriverManager.getConnection(url);
         } catch (SQLException ex) {
-            Logger.getLogger(ServicioAlmacenamientoArticulos.class.getName()).log(Level.SEVERE, "Error al conectar a la base de datos", ex);
+            Logger.getLogger(ArticuloServiceImpl.class.getName()).log(Level.SEVERE, "Error al conectar a la base de datos", ex);
         }
     }
 

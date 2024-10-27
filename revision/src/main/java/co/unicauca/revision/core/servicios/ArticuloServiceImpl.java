@@ -1,7 +1,7 @@
 package co.unicauca.revision.core.servicios;
 
-import co.unicauca.revision.core.fachadaservicios.DTO.InterfaceRepositorioArticulo;
 import co.unicauca.revision.core.accesodatos.modelo.Articulo;
+import co.unicauca.revision.core.accesodatos.repositorios.InterfaceRepositorioArticulo;
 import java.util.List;
 
 

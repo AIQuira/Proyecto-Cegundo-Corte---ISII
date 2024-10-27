@@ -80,5 +80,4 @@ public class Articulo {
     public Conferencia getObjConferencia() {
         return objConferencia;
     }
-
 }
