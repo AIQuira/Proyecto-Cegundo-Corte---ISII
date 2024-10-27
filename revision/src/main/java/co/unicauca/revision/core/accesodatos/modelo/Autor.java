@@ -1,6 +1,11 @@
 package co.unicauca.revision.core.accesodatos.modelo;
 
 import java.util.List;
+import lombok.Setter;
+import lombok.Getter;
+
+@Getter
+@Setter
 
 public class Autor extends Persona{
     

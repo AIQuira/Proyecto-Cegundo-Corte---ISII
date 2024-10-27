@@ -1,5 +1,11 @@
 package co.unicauca.revision.core.accesodatos.modelo;
 
+import lombok.Setter;
+import lombok.Getter;
+
+@Getter
+@Setter
+
 public class Persona {
 
     private int cedula;
@@ -18,51 +24,7 @@ public class Persona {
         this.rol = rol;
     }
 
-    public int getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-    
-    public int getRol() {
-        return rol;
-    }
-
-    public void setRol(int rol) {
-        this.rol = rol;
+    public Persona() {
+        // Constructor sin argumentos
     }
 }

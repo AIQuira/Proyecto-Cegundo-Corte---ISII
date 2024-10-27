@@ -1,40 +1,45 @@
 package co.unicauca.revision.core.servicios;
 
 import co.unicauca.revision.core.accesodatos.modelo.Articulo;
-import co.unicauca.revision.core.accesodatos.repositorios.InterfaceRepositorioArticulo;
+import co.unicauca.revision.core.accesodatos.modelo.Autor;
+import co.unicauca.revision.core.accesodatos.modelo.Revisor;
+import co.unicauca.revision.core.fachadaservicios.dto.ArticuloDTO;
+import co.unicauca.revision.core.fachadaservicios.mapper.ArticuloMapper;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class ArticuloServiceImpl {
-    private InterfaceRepositorioArticulo referenciaRepositorioArticulo;
-    
-    public ArticuloServiceImpl(InterfaceRepositorioArticulo referenciaRepositorioArticulo)
-    {
-        this.referenciaRepositorioArticulo=referenciaRepositorioArticulo;
+    private final List<Articulo> articulos = new ArrayList<>();
+    private final Revisor revisor;
+
+    public ArticuloServiceImpl(Revisor revisor) {
+        this.revisor = revisor;
     }
-    
-    public boolean almacenarArticulo(Articulo objArticulo)
-    {
-        return this.referenciaRepositorioArticulo.almacenarArticulo(objArticulo);
+
+    public ArticuloDTO enviarArticulo(Autor autor, ArticuloDTO articuloDTO) {
+        Articulo articulo = ArticuloMapper.INSTANCE.toEntity(articuloDTO);
+        articulos.add(articulo);
+        autor.getListaArticulos().add(articulo); // Asocia el artículo con el autor
+        return ArticuloMapper.INSTANCE.toDto(articulo);
     }
-      
-    public List<Articulo> listarArticulos()
-    {
-        return this.referenciaRepositorioArticulo.listarArticulos();
+
+    public void calificarArticulo(int indice, int calTitulo, int calDescripcion, int calResumen, int calKeyword) {
+        if (indice >= 0 && indice < articulos.size()) {
+            Articulo articulo = articulos.get(indice);
+            revisor.calificarArticulo(articulo, calTitulo, calDescripcion, calResumen, calKeyword);
+        } else {
+            throw new IllegalArgumentException("Índice de artículo inválido.");
+        }
     }
-    
-    public boolean eliminarArticulo(int idArticulo)
-    {
-        return this.referenciaRepositorioArticulo.eliminarArticulo(idArticulo);
-    }
-    
-    public Articulo consultarArticulo(int idArticulo)
-    {
-        return this.referenciaRepositorioArticulo.consultarArticulo(idArticulo);
-    }
-    
-    public boolean actualizarArticulo(Articulo objArticulo)
-    {
-        return this.referenciaRepositorioArticulo.actualizarArticulo(objArticulo);
+
+    public List<ArticuloDTO> listarArticulos() {
+        List<ArticuloDTO> listaDto = new ArrayList<>();
+        for (Articulo articulo : articulos) {
+            listaDto.add(ArticuloMapper.INSTANCE.toDto(articulo));
+        }
+        return listaDto;
     }
 }

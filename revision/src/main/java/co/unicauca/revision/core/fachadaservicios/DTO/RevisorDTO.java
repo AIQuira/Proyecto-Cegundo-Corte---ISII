@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package co.unicauca.revision.core.fachadaservicios.DTO;
+package co.unicauca.revision.core.fachadaservicios.dto;
 
-/**
- *
- * @author earea
- */
+import lombok.Data;
+import lombok.Setter;
+import lombok.Getter;
+
+@Getter
+@Setter
+@Data
 public class RevisorDTO {
-    
+    private int cedula;
+    private String nombre;
+    private String correo;
+    private String tituloUniversitario;
 }
