@@ -1,7 +1,5 @@
 package co.unicauca.revision.core.accesodatos.modelo;
 
-import co.unicauca.revision.core.accesodatos.modelo.Articulo;
-import co.unicauca.revision.core.accesodatos.modelo.Persona;
 import java.util.List;
 
 public class Autor extends Persona{

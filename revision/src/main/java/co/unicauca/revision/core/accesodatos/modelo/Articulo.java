@@ -1,7 +1,5 @@
 package co.unicauca.revision.core.accesodatos.modelo;
 
-import co.unicauca.revision.core.accesodatos.modelo.Conferencia;
-
 public class Articulo {
    private int idArticulo;
    private String titulo;

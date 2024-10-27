@@ -11,9 +11,9 @@
 	</parent>
         
 	<groupId>co.unicauca</groupId>
-	<artifactId>conferencia</artifactId>
+	<artifactId>revision</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>conferencia</name>
+	<name>revision</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	

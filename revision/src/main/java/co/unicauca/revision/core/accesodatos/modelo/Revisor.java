@@ -1,7 +1,5 @@
 package co.unicauca.revision.core.accesodatos.modelo;
 
-import co.unicauca.revision.core.accesodatos.modelo.Persona;
-
 public class Revisor extends Persona{
     
     private String tituloUniversitario;
